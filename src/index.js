@@ -21,10 +21,10 @@ const {
 
 // Create 3D chart
 const chart = lightningChart().Chart3D({
+    disableAnimations: true,
     // theme: Themes.darkGold
 })
     .setTitle(`LiDAR Point Cloud`)
-    .setBoundingBoxStrokeStyle(emptyLine)
     .setSeriesBackgroundFillStyle(emptyFill)
 
 chart.getDefaultAxisX().setTickStrategy(AxisTickStrategies.Empty).setStrokeStyle(emptyLine)
