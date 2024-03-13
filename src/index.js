@@ -11,7 +11,7 @@ const { lightningChart, PointSeriesTypes3D, PointStyle3D, ColorRGBA, PalettedFil
 // Create 3D chart
 const chart = lightningChart()
     .Chart3D({
-        // theme: Themes.darkGold
+        theme: Themes[new URLSearchParams(window.location.search).get('theme') || 'darkGold'] || undefined,
     })
     .setTitle(`LiDAR Point Cloud`)
 
