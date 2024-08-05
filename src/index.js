@@ -2,7 +2,7 @@
  * LightningChart JS example showcasing visualization of LiDAR scanned 3D typography
  */
 // Import LightningChartJS
-const lcjs = require('@arction/lcjs')
+const lcjs = require('@lightningchart/lcjs')
 
 // Extract required parts from LightningChartJS.
 const { lightningChart, PointSeriesTypes3D, PointStyle3D, ColorRGBA, PalettedFill, LUT, AxisTickStrategies, emptyLine, emptyFill, Themes } =
