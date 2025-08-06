@@ -5,7 +5,7 @@
 const lcjs = require('@lightningchart/lcjs')
 
 // Extract required parts from LightningChartJS.
-const { lightningChart, PointSeriesTypes3D, PointStyle3D, ColorRGBA, PalettedFill, LUT, AxisTickStrategies, emptyLine, emptyFill, Themes } =
+const { lightningChart, PointSeriesTypes3D, PointStyle3D, ColorRGBA, PalettedFill, LUT, AxisTickStrategies, emptyLine, emptyFill, Themes, LegendPosition } =
     lcjs
 
 // Create 3D chart
@@ -13,6 +13,9 @@ const chart = lightningChart({
             resourcesBaseUrl: new URL(document.head.baseURI).origin + new URL(document.head.baseURI).pathname + 'resources/',
         })
     .Chart3D({
+        legend: {
+            position: LegendPosition.RightCenter,
+        },
         theme: Themes[new URLSearchParams(window.location.search).get('theme') || 'darkGold'] || undefined,
     })
     .setTitle(`LiDAR Point Cloud`)
@@ -42,8 +45,6 @@ chart
             .setMinorTickStyle((minor) => minor.setLabelFillStyle(emptyFill)),
     )
     .setStrokeStyle(emptyLine)
-
-const legend = chart.addLegendBox()
 
 let totalPointsCount = 0
 
@@ -104,8 +105,6 @@ const loadBinaryLidarFile = async (assetName) => {
                 size: 1,
             }),
         )
-
-    legend.add(series)
 
     totalPointsCount += pointsCount
     chart.setTitle(`LiDAR Point Cloud | ${totalPointsCount} data points`)
